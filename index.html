@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Color Car</title>
-    <link href="https://fonts.googleapis.com/css2?family=Comic+Sans+MS&display=swap" rel="stylesheet">
+    <title>Color Cars</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Comic Sans MS', cursive, sans-serif;
-            background: #e0f7fa; /* Light cyan background */
-            color: #333;
+            font-family: 'Montserrat', sans-serif;
+            background: #1f1f1f; /* Dark background */
+            color: #f0f0f0;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -18,20 +18,17 @@
         }
 
         h1 {
-            color: #ff5722; /* Bright orange */
-            background: linear-gradient(135deg, #ffeb3b, #ff5722); /* Gradient background */
+            color: #00bcd4; /* Bright cyan */
             padding: 20px;
-            border-radius: 15px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            font-size: 3em;
+            font-size: 2.5em;
             margin-bottom: 20px;
             text-align: center;
-            border: 5px dashed #ff5722; /* Dashed border for fun effect */
+            border-bottom: 2px solid #00bcd4; /* Underline for title */
         }
 
         p {
-            color: #00796b; /* Teal color */
-            font-size: 1.5em;
+            color: #b0bec5; /* Light gray */
+            font-size: 1.2em;
             margin-bottom: 20px;
         }
 
@@ -45,21 +42,29 @@
         .car-button, .color-button {
             margin: 10px;
             padding: 15px;
-            border: 3px solid #4caf50; /* Green border */
-            border-radius: 10px;
+            border: none;
+            border-radius: 8px;
             cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-            background-color: #fff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, box-shadow 0.3s;
+            background-color: #333;
+            color: #f0f0f0;
+            font-weight: 600;
+            font-size: 1em;
         }
 
         .car-button:hover, .color-button:hover {
-            transform: scale(1.1);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+            background-color: #00bcd4;
+            color: #1f1f1f;
         }
 
-        .selected {
-            border: 5px solid #ff5722;
+        .car-button.selected {
+            background-color: #00bcd4;
+            color: #1f1f1f;
+            box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.7); /* White glow effect */
+        }
+
+        .color-button.selected {
+            box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.7); /* White glow effect */
         }
 
         #carContainer {
@@ -70,11 +75,10 @@
             height: 60vh;
             max-width: 700px; /* Set max width */
             margin: 0 auto;
-            background-color: #fff;
+            background-color: #333;
             border-radius: 15px;
-            border: 3px solid #ff5722;
             padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
             overflow: hidden; /* Ensure overflow is hidden */
             position: relative;
         }
@@ -85,8 +89,12 @@
             display: block;
         }
 
-        .colorable:hover {
+        .colorable {
             cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        .colorable:hover {
             opacity: 0.8;
         }
 
@@ -96,21 +104,27 @@
     </style>
 </head>
 <body>
-    <h1>Select a car and a color, then click on the car elements to color them.</h1>
+    <h1>Select a car and color, then color the car elements.</h1>
     
     <div id="carButtons">
-        <div class="car-button" data-car="car1">Car 1</div>
+        <div class="car-button selected" data-car="car1">Car 1</div>
         <div class="car-button" data-car="car2">Car 2</div>
         <div class="car-button" data-car="car3">Car 3</div>
+        <div class="car-button" data-car="car4">Car 4</div>
+        <div class="car-button" data-car="car5">Car 5</div>
     </div>
     
     <div id="colorButtons">
-        <div class="color-button" style="background-color: red;" data-color="red"></div>
-        <div class="color-button" style="background-color: green;" data-color="green"></div>
-        <div class="color-button" style="background-color: blue;" data-color="blue"></div>
-        <div class="color-button" style="background-color: yellow;" data-color="yellow"></div>
-        <div class="color-button" style="background-color: purple;" data-color="purple"></div>
-        <div class="color-button" style="background-color: orange;" data-color="orange"></div>
+        <div class="color-button" style="background-color: #e53935;" data-color="#e53935"></div>
+        <div class="color-button" style="background-color: #43a047;" data-color="#43a047"></div>
+        <div class="color-button" style="background-color: #1e88e5;" data-color="#1e88e5"></div>
+        <div class="color-button" style="background-color: #fdd835;" data-color="#fdd835"></div>
+        <div class="color-button" style="background-color: #8e24aa;" data-color="#8e24aa"></div>
+        <div class="color-button" style="background-color: #ffb300;" data-color="#ffb300"></div>
+        <div class="color-button" style="background-color: #009688;" data-color="#009688"></div>
+        <div class="color-button" style="background-color: #c2185b;" data-color="#c2185b"></div>
+        <div class="color-button" style="background-color: #00ffae;" data-color="#00ffae"></div>
+        <div class="color-button" style="background-color: #ee00ff;" data-color="#ee00ff"></div>
     </div>
 
     <div id="carContainer">
@@ -140,25 +154,39 @@
             <circle class="colorable" cx="30" cy="40" r="5" stroke="black" stroke-width="1" fill="white" />
             <circle class="colorable" cx="70" cy="40" r="5" stroke="black" stroke-width="1" fill="white" />
         </svg>
+        
+        <svg id="car4" class="car hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 50">
+            <!-- Машина 4 -->
+            <rect class="colorable" x="15" y="25" width="70" height="15" stroke="black" stroke-width="1" fill="white" />
+            <rect class="colorable" x="30" y="10" width="40" height="20" stroke="black" stroke-width="1" fill="white" />
+            <circle class="colorable" cx="25" cy="40" r="6" stroke="black" stroke-width="1" fill="white" />
+            <circle class="colorable" cx="75" cy="40" r="6" stroke="black" stroke-width="1" fill="white" />
+        </svg>
+        
+        <svg id="car5" class="car hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 50">
+            <!-- Машина 5 -->
+            <rect class="colorable" x="10" y="15" width="80" height="25" stroke="black" stroke-width="1" fill="white" />
+            <rect class="colorable" x="20" y="5" width="60" height="15" stroke="black" stroke-width="1" fill="white" />
+            <!-- Updated Wheels -->
+            <circle class="colorable" cx="25" cy="40" r="7" stroke="black" stroke-width="1" fill="white" />
+            <circle class="colorable" cx="75" cy="40" r="7" stroke="black" stroke-width="1" fill="white" />
+        </svg>
     </div>
 
     <script>
-        let selectedColor = 'red';
+        let selectedColor = '#e53935';
         let selectedCar = 'car1';
 
-        // Function to set the selected color
         function setColor(event) {
             selectedColor = event.target.getAttribute('data-color');
             document.querySelectorAll('.color-button').forEach(btn => btn.classList.remove('selected'));
             event.target.classList.add('selected');
         }
 
-        // Function to change the color of the SVG element
         function changeColor(event) {
             event.target.setAttribute('fill', selectedColor);
         }
 
-        // Function to set the selected car
         function setCar(event) {
             selectedCar = event.target.getAttribute('data-car');
             document.querySelectorAll('.car').forEach(car => car.classList.add('hidden'));
@@ -167,13 +195,8 @@
             event.target.classList.add('selected');
         }
 
-        // Adding event listeners to car buttons
         document.querySelectorAll('.car-button').forEach(btn => btn.addEventListener('click', setCar));
-
-        // Adding event listeners to color buttons
         document.querySelectorAll('.color-button').forEach(btn => btn.addEventListener('click', setColor));
-
-        // Adding event listeners to SVG elements for coloring
         document.querySelectorAll('.colorable').forEach(el => el.addEventListener('click', changeColor));
     </script>
 </body>
